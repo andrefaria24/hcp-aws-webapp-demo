@@ -35,8 +35,8 @@ resource "aws_instance" "web_server" {
     ami           = var.webserver_ami
     instance_type = var.webserver_instance_type
     key_name      = var.key_name
-    subnet_id = data.terraform_remote_state.network.outputs.aws_pub_sn_id
-    vpc_security_group_ids = [data.terraform_remote_state.network.outputs.aws_sg_http_id]
+    subnet_id = data.terraform_remote_state.networking.outputs.aws_pub_sn_id
+    vpc_security_group_ids = [data.terraform_remote_state.networking.outputs.aws_sg_http_id]
     user_data = file("./bootstrap.sh")
 }
 
